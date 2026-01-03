@@ -5,9 +5,19 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format": "prettier --write \"**/*.{js,ts,jsx,tsx,md,json}\"",
+    "check-format": "prettier --check \"**/*.{js,ts,jsx,tsx,md,json}\"",
     "check-types": "turbo run check-types",
     "prepare": "husky"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,jsx,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "**/*.{json,md}": [
+      "prettier --write"
+    ]
   },
   "devDependencies": {
     "eslint": "^9.39.2",
